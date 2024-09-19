@@ -1,0 +1,43 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Two columns of equal width */
+    gap: 20px;
+}
+
+.pro {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.title h1{
+   
+    font-size: 17px; 
+    width: 100%;
+    text-overflow: clip;
+    height: 20px;
+ 
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    width:auto;
+    height: auto;
+ 
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.footer p{
+    width: 30px;
+    
+    
+}
+
+
+

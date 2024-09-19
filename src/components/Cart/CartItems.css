@@ -1,0 +1,25 @@
+.head{
+   
+    text-align: center; /* Centers the main heading */
+    margin-bottom: 20px;
+    width: 150px;
+
+}
+
+.sub{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; /* Optional: Adds a border under subheadings */
+}
+
+
+
+
+
+.sub h2 {
+    flex: 1; /* Makes each subheading take equal space */
+    font-size: medium;
+    text-align: center; /* Centers the text in each subheading */
+  }

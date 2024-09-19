@@ -2,7 +2,7 @@ import React from "react";
 
 const Header=()=>{
     return <>
-    <h1>Generic Music</h1>
+    <h1 style={{textAlign:"center",backgroundColor:"grey",fontSize:"90px"}}>Generic Music</h1>
     </>
 
 }  

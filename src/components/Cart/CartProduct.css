@@ -1,0 +1,28 @@
+.product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   margin-top: 40px;
+   
+
+}
+
+
+
+.image{
+    width: 50px;
+    height:auto;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    
+    height: 40px;
+    width: 80px;
+}
+
+.button{
+    width: 90px;
+    height: 40px;
+}
