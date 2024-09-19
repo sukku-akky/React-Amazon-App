@@ -4,7 +4,7 @@ import "./CartProduct.css";
 const CartProduct=(props)=>{
     return (
         <>
-        <ul>{
+        <ul className="product-ul">{
             props.items.map((item)=>(
                 <li className="product">
                     <img src={item.imageUrl} className="image"/>

@@ -26,3 +26,9 @@
     width: 90px;
     height: 40px;
 }
+
+
+ul{
+    display: flex;
+    flex-direction: column;
+}

@@ -2,15 +2,17 @@ import React from "react";
 import Products from "./components/Products/Products";
 import Header from "./components/Header/Header";
 import MyNavbar from "./components/Navbar/MyNavbar"
-  
+import Footer from "./components/Footer/Footer";  
+import CartProvider from "./store/CartProvider";
 
 function App() {
   return (
-    <div className="App">
+    <CartProvider>
       <MyNavbar/>
       <Header/>
      <Products/>
-    </div>
+     <Footer/>
+    </CartProvider>
   );
 }
 

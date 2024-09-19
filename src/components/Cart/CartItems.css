@@ -6,6 +6,21 @@
 
 }
 
+.cancel{
+    position: absolute;
+    cursor: pointer;
+    color: rgb(121, 117, 117);
+    top: 0;
+    right: 0;
+    margin: 20px;
+    background: none;
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px solid rgb(121, 117, 117);
+    border-radius: 7px;
+    padding: 5px;
+}
+
 .sub{
     display: flex;
     flex-direction: row;
@@ -23,3 +38,15 @@
     font-size: medium;
     text-align: center; /* Centers the text in each subheading */
   }
+
+.x{
+ border: 1px solid green;
+ padding: 4px;
+ margin: 15px;
+}
+
+
+.product-ul{
+    display: flex;
+    flex-direction: column;
+}

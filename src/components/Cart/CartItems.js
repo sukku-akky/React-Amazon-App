@@ -1,70 +1,40 @@
- import React from "react" ;
+ import React, {useContext} from "react" ;
  import {Modal,Button} from "react-bootstrap";
 import CartProduct from "./CartProduct"
 import "./CartItems.css"
+import CartContext from "../../store/cart-context";
     
-    const  cartElements = [
-
-    {
     
-    title: 'Colors',
-    
-    price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-    quantity: 2,
-    
-    },
-    
-    {
-    
-    title: 'Black and white Colors',
-    
-    price: 50,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-    quantity: 3,
-    
-    },
-    
-    {
-    
-    title: 'Yellow and Black Colors',
-    
-    price: 70,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-    quantity: 1,
-    
-    }
-    
-    ]
 
     const CartItems=(props)=>{
-        
+        const cartCtx=useContext(CartContext);
+       
+        const handlePurchase=()=>{
+            alert("thanks for the purchase")
+        }
         return <>
         <Modal show={props.onShow} onHide={props.onClose}>
             <Modal.Header>
                 <Modal.Title className="head">
                     <h1>Cart</h1>
+                    <button onClick={props.onClose} className="cancel">X</button>
 
                 </Modal.Title>
              
-                <div className="sub">
-                   
-                    <h2 className="title">ITEM</h2>
-                    <h2 className="price">PRICE</h2>
-                    <h2 className="quantity">QUANTITY</h2>
-                </div>
+                
             </Modal.Header>
+            <div className="sub">
+                   
+             <span className="title">ITEM</span>
+             <span className="price">PRICE</span>
+             <span className="quantity">QUANTITY</span>
+             
+            </div>
             <Modal.Body>
-                <CartProduct items={cartElements}/>
+                <CartProduct items={cartCtx.items}/>
             </Modal.Body>
             <Modal.Footer >
-                <Button onClick={props.onClose}>Purchase</Button>
+                <Button onClick={handlePurchase}>Purchase</Button>
             </Modal.Footer>
         </Modal>
         </>
