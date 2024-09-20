@@ -1,8 +1,10 @@
 import React from "react";
 import "./About.css"
+import Header from "../components/Header/Header";
 const About=()=>{
     return (
         <div>
+          <Header/>
           <h1>About Page</h1>
           <div>
             <img src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"/>
