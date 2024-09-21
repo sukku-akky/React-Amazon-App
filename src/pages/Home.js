@@ -1,4 +1,4 @@
-import React,{useState,useRef} from "react";
+import React,{useState,useRef,useEffect,useCallback,useMemo} from "react";
 import "./Home.css"
 import MoviesList from "./Movies/MoviesList";
 
@@ -10,23 +10,25 @@ const Home=()=>{
     const[isRetryCancelled,setIsRetryCancelled]=useState(false);
     const retryTimer=useRef(null);
 
-    const cancelRetryHandler = () => {
+    const memoizedMovies = useMemo(() => movies, [movies]);
+
+    const cancelRetryHandler = useCallback(() => {
         setRetry(false);
         setIsRetryCancelled(true);
         if (retryTimer.current) {
           clearTimeout(retryTimer.current);
            // Stop the retry timer
         }
-      };
+      },[]);
 
-    async function fetchMoviesHandler(){
+    const fetchMoviesHandler=useCallback(async()=>{
         setIsLoading(true);
         setError(null);
-        setRetry(true);
+        
         setIsRetryCancelled(false);
 
         try{
-        const response=await fetch("https://swapi.dev/api/film");
+        const response=await fetch("https://swapi.dev/api/films");
         if (!response.ok){
             throw new Error('something went wrong...Retrying');
 
@@ -43,21 +45,35 @@ const Home=()=>{
         })
         setMovies(transformedMovies);
         setRetry(false);
+        setIsLoading(false);
         } catch(error){
             setError(error.message);
+            setIsLoading(false);
+            setRetry(true)
             if(retry){
                 retryTimer.current=setTimeout(fetchMoviesHandler,5000);
             }
 
         }
-        setIsLoading(false)
         
         
-    }
+        
+    },[retry])
+
+    useEffect(() => {
+        fetchMoviesHandler(); // Fetch data when the component mounts
+        return () => {
+          // Clean up any retry timers on unmount
+          if (retryTimer.current) {
+            clearTimeout(retryTimer.current);
+          }
+        };
+      },[fetchMoviesHandler] );
+
     let content=<p>Found no movies</p>;
 
-    if(movies.length>0){
-        content=<MoviesList moviesList={movies}></MoviesList>
+    if(memoizedMovies.length>0){
+        content=<MoviesList moviesList={memoizedMovies}></MoviesList>
     }
     if(error){
         content=<p>{error}</p>
