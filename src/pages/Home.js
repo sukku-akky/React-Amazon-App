@@ -1,6 +1,7 @@
 import React,{useState,useRef,useEffect,useCallback,useMemo} from "react";
 import "./Home.css"
 import MoviesList from "./Movies/MoviesList";
+import Input from "../components/Input/Input";
 
 const Home=()=>{
     const[movies,setMovies]=useState([]);
@@ -91,9 +92,9 @@ const Home=()=>{
             <button className="latest-album">Get Our Latest Album</button>
             <button className="play-btn"> &#9658; </button>
             </div>
-            
+            <Input/>
             <h2>Films</h2>
-            <button onClick={fetchMoviesHandler}>Get latest films</button>
+            <button onClick={fetchMoviesHandler}>Fetch Films</button>
             {retry && <button onClick={cancelRetryHandler}>Cancel</button>}
             <div >
                 {content}

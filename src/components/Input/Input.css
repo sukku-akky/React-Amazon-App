@@ -1,0 +1,18 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input{
+    color: blue;
+
+}
+
+.box{
+    width: 500px;
+}
+
+.button{
+    margin-top: 5px;
+}
