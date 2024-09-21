@@ -1,7 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Home.css"
+import MoviesList from "./Movies/MoviesList";
 
 const Home=()=>{
+    const[movies,setMovies]=useState([]);
+
+    async function fetchMoviesHandler(){
+        const response=await fetch("https://swapi.dev/api/films");
+        const data=await response.json();
+        const transformedMovies=data.results.map((movieData)=>{
+            return {
+                id:movieData.episode_id,
+                title:movieData.title,
+                date:movieData.release_date,
+                director:movieData.director
+            }
+            })
+            setMovies(transformedMovies);
+        
+        
+    }
     return (
         <div className="container">
             <div style={{textAlign:"center",backgroundColor:"grey",fontSize:"90px"}}>
@@ -10,50 +28,10 @@ const Home=()=>{
             <button className="play-btn"> &#9658; </button>
             </div>
             
-            <h2>Tours</h2>
-            <div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
-                <div className="tour-item">
-                    <span className="tour-date">JUL16</span>
-                    <span className="tour-place">DETROIT, MI</span>
-                    <span className="tour-spec-place">DTE ENERGY MUSIC THEATRE </span>
-                    <button className="buy-btn">BUY TICKETS</button>
-                </div>
+            <h2>Films</h2>
+            <button onClick={fetchMoviesHandler}>Get latest films</button>
+            <div >
+                <MoviesList moviesList={movies}/>
 
             </div>
         </div>
