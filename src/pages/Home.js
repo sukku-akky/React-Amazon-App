@@ -6,31 +6,14 @@ import Input from "../components/Input/Input";
 
 const Home=()=>{
     const[movies,setMovies]=useState([]);
-    const[isLoading,setIsLoading]=useState(false);
-    const[error,setError]=useState(null);
-    const [retry,setRetry]=useState(false);
-    const[isRetryCancelled,setIsRetryCancelled]=useState(false);
-    const retryTimer=useRef(null);
+    
 
-    const memoizedMovies = useMemo(() => movies, [movies]);
+    
 
-    const cancelRetryHandler = useCallback(() => {
-        setRetry(false);
-        setIsRetryCancelled(true);
-        if (retryTimer.current) {
-          clearTimeout(retryTimer.current);
-           // Stop the retry timer
-        }
-      },[]);
-
-    const fetchMoviesHandler=useCallback(async()=>{
-        setIsLoading(true);
-        setError(null);
+    const fetchMoviesHandler=async()=>{
         
-        setIsRetryCancelled(false);
-
         try{
-        const response=await fetch("https://crudcrud.com/api/fcd8efa49d4046d8835a543418d6e074/films");
+        const response=await fetch("https://crudcrud.com/api/76dac5a6b6e0434a8de36eb84bf26045/films");
         if (!response.ok){
             throw new Error('something went wrong...Retrying');
 
@@ -46,21 +29,16 @@ const Home=()=>{
             }
         })
         setMovies(transformedMovies);
-        setRetry(false);
-        setIsLoading(false);
+    
         } catch(error){
-            setError(error.message);
-            setIsLoading(false);
-            setRetry(true)
-            if(retry){
-                retryTimer.current=setTimeout(fetchMoviesHandler,5000);
-            }
+           
+           console.log(error)
 
         }
         
         
         
-    },[retry])
+    }
 
     // useEffect(() => {
     //     fetchMoviesHandler(); // Fetch data when the component mounts
@@ -75,7 +53,7 @@ const Home=()=>{
     
 
     const addMovieHandler=async(movie)=>{
-        const response=await fetch("https://crudcrud.com/api/fcd8efa49d4046d8835a543418d6e074/films",{
+        const response=await fetch("https://crudcrud.com/api/76dac5a6b6e0434a8de36eb84bf26045/films",{
             method:"POST",
             body:JSON.stringify(movie),
             headers:{
@@ -103,20 +81,8 @@ const Home=()=>{
         }
     }
 
-    let content=<p>Found no movies</p>;
-
-    if(memoizedMovies.length>0){
-        content=<MoviesList moviesList={memoizedMovies}  onDelete={deleteMovieHandler}></MoviesList>
-    }
-    if(error){
-        content=<p>{error}</p>
-    }
-    if(isLoading){
-        content=<p>Loading...</p>
-    }
-    if(isRetryCancelled){
-        content=<p>check after sometime</p>
-    }
+    
+    
     return (
         <div className="container">
             <div style={{textAlign:"center",backgroundColor:"grey",fontSize:"90px"}}>
@@ -127,9 +93,9 @@ const Home=()=>{
             <Input addMovie={addMovieHandler}/>
             <h2>Films</h2>
             <button onClick={fetchMoviesHandler}>Fetch Films</button>
-            {retry && <button onClick={cancelRetryHandler}>Cancel</button>}
+           
             <div >
-                {content}
+               <MoviesList moviesList={movies} onDelete={deleteMovieHandler}/>
 
             </div>
         </div>
