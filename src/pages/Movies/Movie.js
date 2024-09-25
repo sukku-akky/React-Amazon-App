@@ -8,6 +8,7 @@ const Movie=(props)=>{
             <span className="title">{props.title}</span>
             <span className="director">{props.director}</span>
             <button className="buy-btn">BUY TICKETS</button>
+            <button  className="buy-btn" onClick={()=>props.onDelete(props.id)}>Delete</button>
         </li>
         </>
     )
