@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./ContactPage.css";
 
 const ContactPage=()=>{
 
@@ -26,18 +26,19 @@ const ContactPage=()=>{
 
     }
     return <>
-         <h2>User Form</h2>
-      <form id="userForm" onSubmit={submitFormhandler}>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" required /><br /><br />
+        <h1 className="heading">Feel Free To Contact Us</h1>
+         
+      <form id="userForm" onSubmit={submitFormhandler} className="form">
+        <label htmlFor="name"></label>
+        <input type="text" id="name" name="name" required placeholder="Username"/><br /><br /><br/>
 
-        <label htmlFor="email">Email ID:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
+        <label htmlFor="email"></label>
+        <input type="email" id="email" name="email" required placeholder="email"/><br /><br /><br/>
 
-        <label htmlFor="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" required /><br /><br />
+        <label htmlFor="phone"></label>
+        <input type="text" id="phone" name="phone" required placeholder="phone_number"/><br /><br /><br/>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="button">Submit</button>
       </form>
     </>
        

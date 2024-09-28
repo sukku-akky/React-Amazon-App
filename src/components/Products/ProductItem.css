@@ -1,14 +1,18 @@
 .products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* Two columns of equal width */
-    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    
 }
 
 .pro {
     display: flex;
     flex-direction: column;
     width: 300px;
-    justify-content: space-around;
+    justify-content: space-between;
+   
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid black;
 }
 
 .title h1{

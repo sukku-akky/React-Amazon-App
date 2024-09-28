@@ -30,6 +30,7 @@ function MyNavbar() {
           <Nav.Link as={NavLink} to="/store">STORE</Nav.Link>
           <Nav.Link as={NavLink} to="/about">ABOUT</Nav.Link>
           <Nav.Link as={NavLink} to="/contact">Contact Us</Nav.Link>
+          
           <Nav className='ml-auto'>
           <a className='cart-holder' onClick={handleShowCart}>Cart <span className='cart-number' >{cartCtx.items.length}</span></a>
           </Nav>

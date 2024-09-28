@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes ,useLocation} from 'react-router-dom';
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import Header from "./components/Header/Header";
@@ -8,19 +8,26 @@ import Footer from "./components/Footer/Footer";
 import About from "./pages/About";
 import CartProvider from "./store/CartProvider";
 import ContactPage from "./pages/ContactPage"
+import SingleProductPage from "./pages/ProductPage/SingleProductPage";
 
 function App() {
+  // const location = useLocation();
+
+  // // Conditional rendering: hide the navbar on specific routes
+  // const hideNavbarOnRoutes = ['/products']; // List of routes where the navbar should be hidden
+  // const shouldHideNavbar = hideNavbarOnRoutes.includes(location.pathname);
+
   return (
     <CartProvider>
     <Router>
-      <MyNavbar />
+      <MyNavbar/>
       
       <Routes>
         <Route path="/"  element={<Home/>}/>
         <Route path="/store" element={<Store/>}/>
         <Route path="/about" element={<About />} />
         <Route  path="/contact" element={<ContactPage/>}/>
-        
+        <Route path="/products/:id" element={<SingleProductPage/>}/>
       </Routes>
       
       <Footer />

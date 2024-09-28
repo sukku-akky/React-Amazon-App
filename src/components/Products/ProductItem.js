@@ -1,7 +1,9 @@
 import React,{useContext} from "react";
 import {Button} from "react-bootstrap"
+import { useNavigate } from "react-router-dom";
 import "./ProductItem.css"
 import CartContext from "../../store/cart-context";
+import FormatPrice from "../../Helpers/FormatPrice";
 
 
 const ProductItem=(props)=>{
@@ -10,9 +12,9 @@ const ProductItem=(props)=>{
     const addItemHandler=(product)=>{
         
         const item={
-            id:product.title,
-            title:product.title,
-            imageUrl:product.imageUrl,
+            id:product.id,
+            title:product.name,
+            imageUrl:product.image,
             price:product.price,
             quantity:1
 
@@ -20,19 +22,26 @@ const ProductItem=(props)=>{
        cartCtx.addItem(item);
        
     }
+    const navigate=useNavigate();
+    const imageClickHandler=(productId)=>{
+        
+
+        navigate(`/products/${productId}`);
+
+    }
 
     return <>
     <ul className="products">
         {props.products.map((product)=>(
-            <li key={product.title} className="pro">
+            <li key={product.id} className="pro">
                 <div className="title">
-                   <h1>{product.title}</h1>
+                   <h1>{product.name}</h1>
                 </div>
                 <div className="image">
-                   <img src={product.imageUrl}/>
+                   <img src={product.image} onClick={()=>imageClickHandler(product.id)}/>
                 </div>
                 <div className="footer">
-                   <p>{product.price}</p>
+                   <p>{<FormatPrice price={product.price}/>}</p>
                
                    <Button onClick={()=>addItemHandler(product)}>Add To Cart</Button>
                 </div>
