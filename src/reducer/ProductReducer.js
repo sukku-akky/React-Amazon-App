@@ -8,9 +8,10 @@ const ProductReducer=(state,action)=>{
             };
 
         case "MY_API_DATA":
-            const featureData=action.payload.filter((curElem)=>{
-                return curElem.featured===true;
-            })
+            const featureData=action.payload.filter((curElm)=>{
+                return curElm.featured===true;
+            });
+            
             return {
                 ...state,
                 isLoading:false,
@@ -34,6 +35,7 @@ const ProductReducer=(state,action)=>{
 
 
         case "SET_SINGLE_PRODUCT":
+            
             return {
                 ...state,
                 isSingleLoading:false,

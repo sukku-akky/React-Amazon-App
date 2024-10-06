@@ -8,12 +8,33 @@
 }
 
 .product-images {
-    flex: 1; /* Takes up equal space */
-    max-width: 40%; /* Limits the width of images to 40% of the container */
+ 
+    
   }
 
   .product-data {
     flex: 1.5; /* Takes up more space compared to images */
     max-width: 60%; /* Limits the width of details to 60% of the container */
     padding: 10px;
+
+  }
+  .delivery{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .product-data-warranty{
+    width: 100%;
+    display: flex;
+ 
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid white;
+    margin-bottom: 1rem;
+
+    .product-warranty-data{
+      text-align: center;
+    }
   }

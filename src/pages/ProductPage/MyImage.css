@@ -1,0 +1,72 @@
+.image-gallery {
+    display: flex;
+  flex-direction: column; /* Makes the container a row */
+  justify-content: space-between; /* Space between items (optional) */
+  align-items: center; /* Aligns items vertically centered */
+  gap: 20px; /* Space between each item */
+
+
+  }
+  
+.image-thumbnails{
+
+
+    height: 304px;
+    
+    position: relative;
+    
+    margin: 0%;
+}
+  
+  .image-thumbnails img {
+    width: 100%; /* Each image takes full width */
+    height: 64px;
+    width: 64px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    height: 100%;
+    border-radius: 0; /* Removes the round shape */
+    object-fit: cover;
+
+  }
+  
+  .image-thumbnails img:hover {
+    border-color: #007bff; /* Blue border on hover */
+  }
+  
+  .main-image-container {
+    flex-grow: 1; /* Take remaining space for the main image */
+    margin-left: 20px; /* Space between thumbnails and main image */
+  }
+  
+  .main-image-container img {
+    width: 100%; /* Full width for the main image */
+    height: auto;
+    object-fit: contain; /* Ensure image fits without being cropped */
+    border: 1px solid #ccc; /* Optional: border for main image */
+    border-radius: 0;
+  }
+
+  .image-thumbnails-container {
+    display: flex;
+
+    overflow: hidden;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center the thumbnails horizontally */
+  }
+
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}

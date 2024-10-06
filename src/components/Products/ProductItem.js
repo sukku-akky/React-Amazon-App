@@ -5,9 +5,15 @@ import "./ProductItem.css"
 import CartContext from "../../store/cart-context";
 import FormatPrice from "../../Helpers/FormatPrice";
 
-
+import {useProductContext} from "../../store/productcontext"
 const ProductItem=(props)=>{
     const cartCtx=useContext(CartContext);
+    
+    const productsContext=useProductContext();
+    
+    const productsArray=productsContext.featureProducts;
+    
+
 
     const addItemHandler=(product)=>{
         
@@ -32,7 +38,7 @@ const ProductItem=(props)=>{
 
     return <>
     <ul className="products">
-        {props.products.map((product)=>(
+        {productsArray.map((product)=>(
             <li key={product.id} className="pro">
                 <div className="title">
                    <h1>{product.name}</h1>

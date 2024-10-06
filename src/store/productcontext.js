@@ -6,7 +6,8 @@ const AppContext=createContext();
 const API="https://api.pujakaitem.com/api/products";
 
 const initialState={
-    isLoading:false,
+
+   isLoading:false,
     isError:false,
     products:[],
     featureProducts:[],
@@ -21,6 +22,7 @@ const AppProvider=({children})=>{
        try {
          const res=await axios.get(url);
          const products=res.data;
+         
         
          dispatch({type:"MY_API_DATA",payload:products});
        } catch (error) {
@@ -34,7 +36,9 @@ const AppProvider=({children})=>{
         dispatch({type:"SET_SINGLE_LOADING"})
         try{
             const res=await axios.get(url);
+            
             const singleProduct=await  res.data;
+
             dispatch({type:"SET_SINGLE_PRODUCT",payload:singleProduct})
         } catch(error){
           dispatch({type:"SET_SINGLE_ERROR"});
