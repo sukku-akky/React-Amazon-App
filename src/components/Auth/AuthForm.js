@@ -65,7 +65,7 @@ const AuthForm=()=>{
                 setTimeout(() => {
                     authCtx.logout();
                 }, 300000);
-                history("/");
+                history("/store");
             }) .catch((error)=>{
                 alert(error.message)
             })
