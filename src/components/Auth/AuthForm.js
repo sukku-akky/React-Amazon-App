@@ -62,6 +62,9 @@ const AuthForm=()=>{
                 }
             }).then(data=>{
                 authCtx.login(data.idToken);
+                setTimeout(() => {
+                    authCtx.logout();
+                }, 300000);
                 history("/");
             }) .catch((error)=>{
                 alert(error.message)
