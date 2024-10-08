@@ -1,10 +1,15 @@
 import React,{useState,useContext} from 'react';
-import { Navbar, Nav} from 'react-bootstrap';
+import { Navbar, Nav, Button} from 'react-bootstrap';
 import {NavLink} from "react-router-dom"
 import "./MyNavbar.css";
 import CartItems from '../Cart/CartItems';
 import CartContext from '../../store/cart-context';
+import AuthContext from '../../store/auth-context';
 function MyNavbar() {
+
+  const authCtx=useContext(AuthContext);
+
+  const isLoggedIn=authCtx.isLoggedIn;
 
   const cartCtx=useContext(CartContext);
 
@@ -30,7 +35,9 @@ function MyNavbar() {
           <Nav.Link as={NavLink} to="/store">STORE</Nav.Link>
           <Nav.Link as={NavLink} to="/about">ABOUT</Nav.Link>
           <Nav.Link as={NavLink} to="/contact">Contact Us</Nav.Link>
-          <Nav.Link as={NavLink } to="/auth">Login</Nav.Link>
+          {!isLoggedIn &&<Nav.Link as={NavLink } to="/auth">Login</Nav.Link>}
+          {isLoggedIn && <Nav.Link as={NavLink} to="/profile">profile</Nav.Link>}
+          {isLoggedIn && <Nav.Link as={Button} >Logout</Nav.Link>}
           <Nav className='ml-auto'>
           <a className='cart-holder' onClick={handleShowCart}>Cart <span className='cart-number' >{cartCtx.items.length}</span></a>
           </Nav>

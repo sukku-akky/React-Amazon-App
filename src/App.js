@@ -10,6 +10,7 @@ import CartProvider from "./store/CartProvider";
 import ContactPage from "./pages/ContactPage"
 import SingleProductPage from "./pages/ProductPage/SingleProductPage";
 import AuthPage from "./pages/ProductPage/AuthPage";
+import ProfilePage from "./pages/ProductPage/ProfilePage";
 
 function App() {
   // const location = useLocation();
@@ -29,6 +30,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route  path="/contact" element={<ContactPage/>}/>
         <Route path="/auth" element={<AuthPage/>}/>
+        <Route path="/profile" element={<ProfilePage/>}/>
+        
         <Route path="/products/:id" element={<SingleProductPage/>}/>
       </Routes>
       
