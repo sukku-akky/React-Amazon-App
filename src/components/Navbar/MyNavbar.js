@@ -15,6 +15,8 @@ function MyNavbar() {
   const cartCtx=useContext(CartContext);
 
   const [showCart,setShowCart]=useState(false);
+  const userEmail=authCtx.email;
+  console.log(userEmail);
 
   const handleShowCart=()=>{
     setShowCart(true);
@@ -44,6 +46,7 @@ function MyNavbar() {
           {!isLoggedIn &&<Nav.Link as={NavLink } to="/auth">Login</Nav.Link>}
           {isLoggedIn && <Nav.Link as={NavLink} to="/profile">profile</Nav.Link>}
           {isLoggedIn && <Nav.Link as={Button} onClick={logoutHandler}>Logout</Nav.Link>}
+          {isLoggedIn && <li><span className='user'>Hi, {userEmail.split('@')[0]}</span></li>} 
           <Nav className='ml-auto'>
           <a className='cart-holder' onClick={handleShowCart}>Cart <span className='cart-number' >{cartCtx.items.length}</span></a>
           </Nav>

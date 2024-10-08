@@ -61,7 +61,7 @@ const AuthForm=()=>{
                     })
                 }
             }).then(data=>{
-                authCtx.login(data.idToken);
+                authCtx.login(data.idToken,enteredEmail);
                 setTimeout(() => {
                     authCtx.logout();
                 }, 300000);

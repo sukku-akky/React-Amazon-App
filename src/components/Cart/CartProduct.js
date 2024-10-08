@@ -1,17 +1,22 @@
-import React from "react";
+import React,{useContext} from "react";
 import {Button} from "react-bootstrap"
 import "./CartProduct.css";
+import CartContext from "../../store/cart-context";
 const CartProduct=(props)=>{
+    const cartCtx=useContext(CartContext);
+    const removeItemhandler=(id)=>{
+        cartCtx.removeItem(id);
+    }
     return (
         <>
-        <ul className="product-ul">{
+        <ul className="mega">{
             props.items.map((item)=>(
-                <li className="product">
-                    <img src={item.imageUrl} className="image"/>
+                <li className="mini" key={item.id}>
+                    <img src={item.imageUrl} className="miniImage"/>
                     <p className="title">{item.title} </p>
                     <p className="price">{item.price} </p>
                     <p className="quantity">{item.quantity}</p>
-                    <Button variant="danger" className="button">REMOVE</Button>
+                    <Button variant="danger" className="button" onClick={()=>removeItemhandler(item.id)}>REMOVE</Button>
                     </li>
             )
 
