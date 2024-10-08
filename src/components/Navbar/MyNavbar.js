@@ -1,11 +1,12 @@
 import React,{useState,useContext} from 'react';
 import { Navbar, Nav, Button} from 'react-bootstrap';
-import {NavLink} from "react-router-dom"
+import {NavLink,useNavigate} from "react-router-dom"
 import "./MyNavbar.css";
 import CartItems from '../Cart/CartItems';
 import CartContext from '../../store/cart-context';
 import AuthContext from '../../store/auth-context';
 function MyNavbar() {
+  const navigate=useNavigate();
 
   const authCtx=useContext(AuthContext);
 
@@ -17,6 +18,11 @@ function MyNavbar() {
 
   const handleShowCart=()=>{
     setShowCart(true);
+  }
+
+  const logoutHandler=()=>{
+    authCtx.logout();
+    navigate("/auth");
   }
 
   const handleCloseCart=()=>{
@@ -37,7 +43,7 @@ function MyNavbar() {
           <Nav.Link as={NavLink} to="/contact">Contact Us</Nav.Link>
           {!isLoggedIn &&<Nav.Link as={NavLink } to="/auth">Login</Nav.Link>}
           {isLoggedIn && <Nav.Link as={NavLink} to="/profile">profile</Nav.Link>}
-          {isLoggedIn && <Nav.Link as={Button} >Logout</Nav.Link>}
+          {isLoggedIn && <Nav.Link as={Button} onClick={logoutHandler}>Logout</Nav.Link>}
           <Nav className='ml-auto'>
           <a className='cart-holder' onClick={handleShowCart}>Cart <span className='cart-number' >{cartCtx.items.length}</span></a>
           </Nav>
