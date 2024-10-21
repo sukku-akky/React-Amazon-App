@@ -121,6 +121,7 @@ export const deleteItemfromEnd=(item)=>{
 }
 
 export const fetchingItemsFromEnd=(email)=>{
+  
    const encodedEmail=email.split('@')[0];
     return async (dispatch)=>{
         const getItemsFromEnd=async()=>{

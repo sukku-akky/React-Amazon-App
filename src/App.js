@@ -14,6 +14,7 @@ import { cartActions } from "./store/reduc.store";
 //import AuthPage from "./pages/ProductPage/AuthPage";
 //import ProfilePage from "./pages/ProductPage/ProfilePage";
 import AuthContext from "./store/auth-context";
+import ChangePassword from "./components/Auth/ChangePassword";
 
 import { fetchMoviesFromEnd } from "./store/movie-actions";
 const Home = lazy(() => import("./pages/Home"));
@@ -31,10 +32,15 @@ function App() {
   const email=authCtx.email;
 
   useEffect(()=>{
-    dispatch(fetchingItemsFromEnd(email))
+    if(email){
+      dispatch(fetchingItemsFromEnd(email))
+    }else{
+      console.warn('Email is null or undefined. Cannot fetch items.');
+    }
+    
     
 
-  },[]);
+  },[email,dispatch]);
 
   return (
     
@@ -49,7 +55,7 @@ function App() {
             path="/store" 
             element={authCtx.isLoggedIn ? <Store /> : <Navigate to="/auth" />} 
           />
-
+        <Route path="/change" element={<ChangePassword/>}/>
         <Route path="/about" element={<About />} />
         <Route  path="/contact" element={<ContactPage/>}/>
         <Route path="/auth" element={<AuthPage/>}/>

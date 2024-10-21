@@ -52,11 +52,12 @@ function MyNavbar() {
           {!isLoggedIn &&<Nav.Link as={NavLink } to="/auth">Login</Nav.Link>}
           {isLoggedIn && <Nav.Link as={NavLink} to="/profile">profile</Nav.Link>}
           {isLoggedIn && <Nav.Link as={Button} onClick={logoutHandler}>Logout</Nav.Link>}
-          
+          {!isLoggedIn && <NavLink as={Button} to="/change">Change Password</NavLink>}
           {isLoggedIn && (
              <li className="nav-item user-info">
-             <img src={photoUrl} alt="User-a" className="user-photo" />
+             
              <span className='user'>Hi, {fullName}</span>
+             <img src={photoUrl} alt="User-a" className="user-photo" />
              </li>
           )}
           <Nav className='ml-auto'>

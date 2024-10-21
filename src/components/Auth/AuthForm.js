@@ -71,7 +71,7 @@ const AuthForm=()=>{
 
 
     };
-
+    
 
 
     return (
@@ -86,6 +86,7 @@ const AuthForm=()=>{
                     <label htmlFor="password">Your Password</label>
                     <input type="password" id="password" required ref={passwordInputRef}/>
                 </div>
+            
                 <div>
                     {!isLoading && <button>{isLogin? "Login" :"Create Account"}</button>}
                     {isLoading && <p>sending request...</p>}
