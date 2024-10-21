@@ -1,6 +1,7 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react";
 import "./MyImage.css"
 const MyImage=(props)=>{
+    const[mainImage,setMainImage]=useState(props.images[0])
     
     return (
         <Fragment className="image-gallery">
@@ -9,9 +10,13 @@ const MyImage=(props)=>{
                 <ul>
             {props.images.map((curElm,index)=>{
                 return (
-                    <figure key={index}>
+                    <figure >
                         <img src={curElm.url}
-                        alt={curElm.filename}/>
+                        alt={curElm.filename}
+                        key={index}
+                        onClick={()=>setMainImage(curElm)}/>
+                        
+                        
                     </figure>
                 )
             })}
@@ -19,7 +24,7 @@ const MyImage=(props)=>{
             </div>
             </div>
             <div className="main-image-container">
-                <img src={props.images[0].url} alt={props.images[0].filename}/>
+                <img src={mainImage.url} alt={props.images[0].filename}/>
 
             </div>
         </Fragment>

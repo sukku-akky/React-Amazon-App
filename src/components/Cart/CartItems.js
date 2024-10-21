@@ -14,8 +14,8 @@ const CartItems = (props) => {
     };
 
     // Calculate total quantity and price
-    const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
-    const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalQuantity = useSelector(state=>state.cart.totalQuantity);
+    const totalPrice = useSelector(state=>state.cart.totalAmount);
 
     return (
         <Modal show={cartIsVisible} onHide={props.onClose} className="mummy">
@@ -29,7 +29,7 @@ const CartItems = (props) => {
                 {items.length === 0 && <span className="head">Add items to cart</span>}
                 {items.length > 0 && (
                     <>
-                        <div className="sub">
+                        <div className="sub-titles">
                             <span className="title">ITEM</span>
                             <span className="price">PRICE</span>
                             <span className="quantity">QUANTITY</span>

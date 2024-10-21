@@ -1,31 +1,55 @@
-import React,{useRef} from "react";
+import React,{useState,useContext} from "react";
 import "./Input.css"
+
+import { useDispatch } from "react-redux";
+
 const Input=(props)=>{
-    const titleRef=useRef('');
-    const dateRef=useRef('');
-    const directorRef=useRef('');
+    
+    
+    
+    const[movie,setMovie]=useState({
+        title:'',
+        director:'',
+        releaseDate:''
+    });
+
+    
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setMovie((prevState) => ({
+          ...prevState,
+          [name]: value,
+        }));
+      };
 
     const formSubmitHandler=(event)=>{
         event.preventDefault();
         const newMovie={
-            id:Math.random(),
-            title:titleRef.current.value,
-            director:directorRef.current.value,
-            date:dateRef.current.value
+            
+            title:movie.title,
+            director:movie.director,
+            date:movie.releaseDate
         }
+        props.onAdd(newMovie);
+        setMovie({
+            title:'',
+        director:'',
+        releaseDate:''
+        })
         
-        props.addMovie(newMovie);
+        
 
     }
     return (
         <form onSubmit={formSubmitHandler} className="form">
             <label htmlFor="title" className="input">TITLE</label>
-            <input type="text" id="title" className="box" name="title" ref={titleRef}/>
+            <input type="text" id="title" className="box" name="title" value={movie.title} onChange={handleChange}/>
             <label htmlFor="director" className="input">DIRECTOR</label>
-            <input id="director" type="text" className="box" name="director" ref={directorRef}/>
+            <input id="director" type="text" className="box" name="director" value={movie.director} onChange={handleChange}/>
             <label htmlFor="date" className="input">RELEASE DATE</label>
-            <input id="date" type="date" className="box" name="date" ref={dateRef}/>
-            <button type="submit" className="button">ADD MOVIE</button>
+            <input id="date" type="date" className="box" name="releaseDate" value={movie.releaseDate} onChange={handleChange}/>
+            <button type="submit" className="button" >ADD MOVIE</button>
         </form>
     )
 

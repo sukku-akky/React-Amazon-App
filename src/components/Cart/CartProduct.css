@@ -10,7 +10,7 @@
 .mini-p {
     display: flex;
     justify-content: space-between; /* Aligns items horizontally */
-    
+    flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #ddd; /* Adds a divider between cart items */
     background-color: #f9f9f9;
@@ -22,6 +22,7 @@
     justify-content: space-between; /* Keep items spaced apart */
     align-items: center; /* Align items vertically centered */
     padding: 10px 0;
+    flex-direction: row;
     border-bottom: 1px solid #ccc;
 }
 
@@ -75,7 +76,10 @@
         margin: 5px 0; /* Space above and below each element */
     }
 }
-
+.mini-buttons{
+    display: flex;
+    flex-direction: row;
+}
 .button {
     margin-left: 10px;
     background-color: #d9534f; /* Red button for remove */
