@@ -2,16 +2,21 @@ import React,{useContext} from "react";
 import {Button} from "react-bootstrap"
 import { useNavigate } from "react-router-dom";
 import "./ProductItem.css"
-import CartContext from "../../store/cart-context";
+import { useDispatch,useSelector } from "react-redux";
 import FormatPrice from "../../Helpers/FormatPrice";
-
+import { cartActions } from "../../store/reduc.store";
 import {useProductContext} from "../../store/productcontext"
+import AuthContext from "../../store/auth-context";
+import { addItemToEnd } from "../../store/cart-actions";
 const ProductItem=(props)=>{
-    const cartCtx=useContext(CartContext);
     
+    const dispatch=useDispatch();
+    const items=useSelector(state=>state.cart.items)
     const productsContext=useProductContext();
-    
+    const authCtx=useContext(AuthContext);
     const productsArray=productsContext.featureProducts;
+    const email=authCtx.email;
+
     
 
 
@@ -22,10 +27,18 @@ const ProductItem=(props)=>{
             title:product.name,
             imageUrl:product.image,
             price:product.price,
-            quantity:1
+            quantity:1,
+            email:email,
 
         }
-       cartCtx.addItem(item);
+        const existingItem=items.find(it=>it.id===item.id);
+        if(existingItem){
+            alert('item is already added to cart')
+        } else{
+            dispatch(addItemToEnd(item))
+        }
+        
+    
        
     }
     const navigate=useNavigate();
@@ -43,7 +56,7 @@ const ProductItem=(props)=>{
                 <div className="title">
                    <h1>{product.name}</h1>
                 </div>
-                <div className="image">
+                <div className="pd-image">
                    <img src={product.image} onClick={()=>imageClickHandler(product.id)}/>
                 </div>
                 <div className="footer">

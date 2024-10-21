@@ -7,7 +7,7 @@ const Footer=()=>{
         <footer>
             <div className="footer-title">The Generics</div>
             <div className="footer-icons">
-                <ul>
+                <ul className="ul-icons">
                     <li>
                         <a>
                             

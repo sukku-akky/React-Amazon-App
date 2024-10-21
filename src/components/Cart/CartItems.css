@@ -1,27 +1,23 @@
-.head{
-   
-    text-align: center; /* Centers the main heading */
+.head {
+    text-align: center;
     margin-bottom: 20px;
-    width: 150px;
-
+    font-size: 24px; /* Ensures the heading is large enough */
 }
 
-.mummy{
+.mummy {
+    width: 800px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
     justify-content: center;
-    align-items: center;
-    width: 800px;
 }
 
-.cancel{
+.cancel {
     position: absolute;
     cursor: pointer;
     color: rgb(121, 117, 117);
-    top: 0;
-    right: 0;
-    margin: 20px;
+    top: 20px;
+    right: 20px;
     background: none;
     font-size: 16px;
     font-weight: 700;
@@ -30,36 +26,31 @@
     padding: 5px;
 }
 
-.sub{
+.sub {
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
+    justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px solid #ccc; /* Optional: Adds a border under subheadings */
+    border-bottom: 1px solid #ccc;
+}
+
+.sub span {
+    flex: 1;
+    font-size: 16px;
+    text-align: center;
+}
+
+.product {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 
 
-
-
-.sub h2 {
-    flex: 1; /* Makes each subheading take equal space */
-    font-size: medium;
-    text-align: center; /* Centers the text in each subheading */
-  }
-
-.x{
- border: 1px solid green;
- padding: 4px;
- margin: 15px;
-}
-
-
-.product{
-    display: flex;
+.cart-footer123 {
+    display: flex !important;  
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    justify-content: space-between !important;
+    padding: 10px !important;
 }

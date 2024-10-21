@@ -1,40 +1,106 @@
-.mini{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-left: 0%;
-    margin-bottom: 2rem;
-    
-   
-
-}
-
-
-
-.miniImage{
-    width: 70px;
-    height:auto;
-    margin:0 auto;
-}
-
-.title{
-    display: flex;
-    justify-content: center;
-    
-    height: 40px;
-    width: 80px;
-}
-
-.button{
-    width: 90px;
-    height: 40px;
-}
-
-
-.mega{
+.mega {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+    gap: 20px; /* Adds spacing between each cart item */
 }
+
+.mini-p {
+    display: flex;
+    justify-content: space-between; /* Aligns items horizontally */
+    
+    align-items: center;
+    border-bottom: 1px solid #ddd; /* Adds a divider between cart items */
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.mini-q {
+    display: flex;
+    justify-content: space-between; /* Keep items spaced apart */
+    align-items: center; /* Align items vertically centered */
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.miniImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+    border-radius: 5px;
+    margin-right: 5px; 
+    margin-left: 2px;/* Adds space to the right of the image */
+}
+
+.mini-title {
+    flex: 1; /* Title takes more space */
+    margin-right: 20px; /* Add space between title and price */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.mini-price {
+    margin-right: 20px; /* Add space between price and quantity */
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.mini-quantity {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .mini-q {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .miniImage {
+        width: 100%; /* Full width for small screens */
+        height: auto;
+        margin-bottom: 10px; /* Adds space below the image */
+    }
+
+    .mini-title {
+        margin: 0; /* Remove margin for mobile */
+    }
+
+    .mini-price, .mini-quantity {
+        text-align: left; /* Align text to the left */
+        margin: 5px 0; /* Space above and below each element */
+    }
+}
+
+.button {
+    margin-left: 10px;
+    background-color: #d9534f; /* Red button for remove */
+    border-color: #d9534f;
+    color: white;
+}
+
+button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff; /* Default color for increment/decrement buttons */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+button:disabled {
+    background-color: #ccc; /* Greyed out when disabled */
+    cursor: not-allowed;
+}
+

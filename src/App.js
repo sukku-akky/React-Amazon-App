@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import MyNavbar from "./components/Navbar/MyNavbar"
 import Footer from "./components/Footer/Footer";  
 //import About from "./pages/About";
-import CartProvider from "./store/CartProvider";
+
 //import ContactPage from "./pages/ContactPage"
 //import SingleProductPage from "./pages/ProductPage/SingleProductPage";
 //import AuthPage from "./pages/ProductPage/AuthPage";
@@ -27,7 +27,7 @@ function App() {
   const authCtx=useContext(AuthContext);
   
   return (
-    <CartProvider>
+    
       
     <Router>
       <MyNavbar/>
@@ -51,7 +51,7 @@ function App() {
       <Footer />
     </Router>
     
-  </CartProvider>
+  
   );
 }
 
