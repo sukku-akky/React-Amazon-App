@@ -17,8 +17,10 @@ function MyNavbar() {
 
 
   const cartIsVisible=useSelector(state=>state.cart.cartIsVisible)
-  const userEmail=authCtx.email;
-  console.log(userEmail);
+  const fullName=authCtx.fullName;
+  const photoUrl=authCtx.url;
+  console.log(photoUrl)
+  console.log(fullName)
 
   const handleShowCart=()=>{
     dispatch(cartActions.toggle());
@@ -50,7 +52,13 @@ function MyNavbar() {
           {!isLoggedIn &&<Nav.Link as={NavLink } to="/auth">Login</Nav.Link>}
           {isLoggedIn && <Nav.Link as={NavLink} to="/profile">profile</Nav.Link>}
           {isLoggedIn && <Nav.Link as={Button} onClick={logoutHandler}>Logout</Nav.Link>}
-          {isLoggedIn && <li><span className='user'>Hi, {userEmail.split('@')[0]}</span></li>} 
+          
+          {isLoggedIn && (
+             <li className="nav-item user-info">
+             <img src={photoUrl} alt="User-a" className="user-photo" />
+             <span className='user'>Hi, {fullName}</span>
+             </li>
+          )}
           <Nav className='ml-auto'>
           <a className='cart-holder' onClick={handleShowCart}>Cart <span className='cart-number' >{items.length}</span></a>
           </Nav>

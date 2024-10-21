@@ -5,7 +5,9 @@ const AuthContext=React.createContext({
     isLoggedIn:false,
     email:'',
     login:(token)=>{},
-    logout:()=>{}
+    logout:()=>{},
+    fullName:'',
+    url:''
 });
 
  export const AuthContextProvider=(props)=>{
@@ -13,6 +15,8 @@ const AuthContext=React.createContext({
    const initialEmail=localStorage.getItem("email");
     const [token,setToken]=useState(initialToken);
     const[email,setEmail]=useState(initialEmail);
+    const[fullName,setFullName]=useState('');
+    const[url,setUrl]=useState('');
 
     const userIsLoggedIn=!!token;
 
@@ -30,12 +34,23 @@ const AuthContext=React.createContext({
         setEmail(localStorage.removeItem("email"));
     }
 
+    const setFullNameHandler=(fullName)=>{
+        setFullName(fullName);
+    }
+    const setUrlHandler=(url)=>{
+        setUrl(url);
+    }
+
     const contextValue={
         token:token,
         isLoggedIn:userIsLoggedIn,
         email:email,
         login:loginHandler,
-        logout:logoutHandler
+        logout:logoutHandler,
+        setFullNameHandler,
+        setUrlHandler,
+        fullName:fullName,
+        url:url
     };
 
    return <AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>

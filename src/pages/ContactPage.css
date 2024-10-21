@@ -13,3 +13,18 @@
     background-color: brown;
     color: aliceblue;
 }
+
+.modal-contact {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+  }
+
+  .close-button-contact {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }

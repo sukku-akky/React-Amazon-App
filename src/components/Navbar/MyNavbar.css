@@ -50,3 +50,23 @@ body{
 .user{
     color: red;
 }
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between image and name */
+  }
+  
+  .user-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;  /* Ensures the image covers the entire area without distortion */
+    border: 2px solid #fff; /* Optional: add border around image for better visibility */
+  }
+  
+  .user-a {
+    font-size: 16px;
+    color: #fff; /* Adjust according to your navbar's color scheme */
+  }
+  

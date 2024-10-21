@@ -44,7 +44,7 @@ const Home=()=>{
     return (
         <div className="container">
             <div style={{textAlign:"center",backgroundColor:"grey",fontSize:"90px"}}>
-            <h1 >Generic Music</h1>
+            <h1 >Generic Movies</h1>
             <button className="latest-album">Get Our Latest Album</button>
             <button className="play-btn"> &#9658; </button>
             </div>
